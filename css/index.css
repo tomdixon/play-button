@@ -1,0 +1,32 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+#play-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+#play-button {
+  background-size: 600px 233px;
+  background-image: url(../img/play-button.png);
+  width: 300px;
+  height: 233px;
+  cursor: pointer;
+}
+
+#play-button:active {
+  background-position-x: -300px;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
