@@ -7,22 +7,43 @@ var buttonOut = new Howl({
   html5: true
 });
 
+var pressing = false;
+
 $(document).ready(function() {
   $("#play-button").on("mousedown", function() {
-    buttonIn.play();
+    if (!pressing) {
+      pressing = true;
+      $(this).addClass("pressed");
+      buttonIn.play();
+
+      setTimeout(() => {
+        $(this).removeClass("pressed");
+        buttonOut.play();
+
+        $("body").css(
+          "background-color",
+          `rgb(${randomBetween(0, 256)},${randomBetween(
+            0,
+            256
+          )}, ${randomBetween(0, 256)}`
+        );
+
+        pressing = false;
+      }, 500);
+    }
   });
 
-  $("#play-button").on("mouseup", function() {
-    buttonOut.play();
+  // $("#play-button").on("mouseup", function() {
+  //   buttonOut.play();
 
-    $("body").css(
-      "background-color",
-      `rgb(${randomBetween(0, 256)},${randomBetween(0, 256)}, ${randomBetween(
-        0,
-        256
-      )}`
-    );
-  });
+  //   $("body").css(
+  //     "background-color",
+  //     `rgb(${randomBetween(0, 256)},${randomBetween(0, 256)}, ${randomBetween(
+  //       0,
+  //       256
+  //     )}`
+  //   );
+  // });
 });
 
 var randomBetween = function(from, to) {

@@ -18,7 +18,7 @@
   cursor: pointer;
 }
 
-#play-button:active {
+#play-button.pressed {
   background-position-x: -300px;
 }
 
